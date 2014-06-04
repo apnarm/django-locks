@@ -2,13 +2,10 @@ import contextlib
 
 from django.db import transaction
 
+from django_readwrite.connection import connection_state
+
+from django_locks.contexts.multidb_pool import connections
 from django_locks.models import Lock
-
-from django_multidb.connection import connection_state
-from django_multidb.pool import TemporaryConnectionPool
-
-
-connections = TemporaryConnectionPool(alias_prefix='django-locks')
 
 
 @contextlib.contextmanager

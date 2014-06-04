@@ -83,10 +83,10 @@ disrupted if a locked function uses custom transaction
 management. Nested locks will also suffer from this
 limitation.
 
-To solve this, you can install the **django-multidb**
+To solve this, you can install the **django-readwrite**
 library. This allows **django-locks** to interact with
 the database using its own, separate connections.
 
 The `lock-abort` and `lock-block` management commands
 avoid the issues with transactions by running commands
-in a subprocess. They do not require django-multidb.
+in a subprocess. They do not require django-readwrite.

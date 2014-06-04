@@ -37,7 +37,7 @@ from django.utils.functional import wraps
 from django_locks.models import Lock
 
 try:
-    import django_multidb
+    import django_readwrite
 except ImportError:
     from django_locks.contexts.db import grab_db_lock
 else:
