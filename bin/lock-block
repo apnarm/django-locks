@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Runs a command with database locking, to prevent multiple servers from
+# running it at the same time. This command, lock-block, will wait until the
+# lock becomes available if it is already in use. See "lock-abort" for the
+# alternate mode.
+#
+# This also uses a lock file to prevent one server from accessing the database
+# more than once for the same command. This only becomes an issue if the server
+# or database server is running slowly, or if the command takes a long time.
+#
+# Usage: lock-block python my-script.py
+#
+
+export RUN_LOCK_WAIT_MODE="wait"
+
+# Use an environment variable to avoid having the parameters mangled.
+export RUN_LOCK_COMMAND="$*"
+
+django-admin runlock
